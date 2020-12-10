@@ -24,11 +24,10 @@ $("#btn").click(function (e) {
   setResult('')
 });
 
-$('#res').click(function (e) { 
-  var copyText = $('#res');
+function addClipBoard() { 
+  var copyText = document.getElementById('res');
   copyText.select();
-  copyText.setSelectionRange(0, 99999);
   document.execCommand("copy");
   alert("Copied the text: " + copyText.value);
-});
+};
  
