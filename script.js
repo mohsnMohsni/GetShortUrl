@@ -1,6 +1,6 @@
 $('#loader').hide();
-function setResult(res, n=0) {
-  $("#res").html(res);
+function setResult(res) {
+  $("#res").val(res);
   
 }
 
@@ -12,7 +12,7 @@ function getUrl(url) {
     data: { url: url },
     success: function (response) {
       var ter = response;
-      setResult(ter['result_url'], 0);
+      setResult(ter['result_url']);
       $('#loader').hide()
     },
   });
@@ -21,5 +21,14 @@ function getUrl(url) {
 $("#btn").click(function (e) {
   var longLink = $("#inpt").val();
   getUrl(longLink);
-  setResult('', 1)
+  setResult('')
 });
+
+$('#res').click(function (e) { 
+  var copyText = $('#res');
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  alert("Copied the text: " + copyText.value);
+});
+ 
